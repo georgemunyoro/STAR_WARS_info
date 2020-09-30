@@ -1,1 +1,1 @@
-# _Work in Progres. When done this will be updated_
+# This project is about creating **REST** APIs that will provide provide data about particular movies and star cast.
