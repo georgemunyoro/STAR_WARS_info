@@ -1,0 +1,7 @@
+{
+    "characters " : "/characters",
+    "planets" : "/planets",
+    "species" : "/species",
+    "starships" : "/starships",
+    "vehicles" : "/vehicles"
+}
