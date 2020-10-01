@@ -41,3 +41,15 @@ def search_species(**kwargs) -> str:
 def search_vehicles(**kwargs) -> str:
     return search_csv_file(["./data/vehicles.csv"], **kwargs)
 
+
+def search_all(**kwargs) -> str:
+    return search_csv_file(
+        [
+            "./data/vehicles.csv",
+            "./data/species.csv",
+            "./data/starships.csv",
+            "./data/planets.csv",
+            "./data/characters.csv",
+        ],
+        **kwargs
+    )
