@@ -1,8 +1,8 @@
 import csv
 import json
 
-csvFilePath = './data/vehicles.csv'
-jsonfilepath = './data/vehicles.json'
+csvFilePath = "./data/vehicles.csv"
+jsonfilepath = "./data/vehicles.json"
 
 data = {}
 count = 0
