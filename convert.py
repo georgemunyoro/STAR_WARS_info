@@ -16,4 +16,4 @@ with open(csvFilePath) as csvFile:
 print(data)
 
 with open(jsonfilepath, "w") as jsonFile:
-    jsonFile.write(json.dumps(data,indent=4))
+    jsonFile.write(json.dumps(data, indent=4))
