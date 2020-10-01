@@ -22,3 +22,22 @@ def search_csv_file(files_to_search: List[str], **kwargs) -> str:
     return json.dumps(matching_rows)
 
 
+def search_characters(**kwargs) -> str:
+    return search_csv_file(["./data/characters.csv"], **kwargs)
+
+
+def search_planets(**kwargs) -> str:
+    return search_csv_file(["./data/planets.csv"], **kwargs)
+
+
+def search_starships(**kwargs) -> str:
+    return search_csv_file(["./data/starships.csv"], **kwargs)
+
+
+def search_species(**kwargs) -> str:
+    return search_csv_file(["./data/species.csv"], **kwargs)
+
+
+def search_vehicles(**kwargs) -> str:
+    return search_csv_file(["./data/vehicles.csv"], **kwargs)
+
