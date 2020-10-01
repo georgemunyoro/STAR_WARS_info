@@ -1,5 +1,4 @@
 import csv
-import json
 from typing import List
 
 
@@ -19,7 +18,7 @@ def search_csv_file(files_to_search: List[str], **kwargs) -> str:
                     if key in row.keys() and row[key] == value:
                         matching_rows.append(row)
 
-    return json.dumps(matching_rows)
+    return matching_rows
 
 
 def search_characters(**kwargs) -> str:
