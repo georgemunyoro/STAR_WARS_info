@@ -1,7 +1,9 @@
+import json
+
+import pandas as pd
 from flask import Flask, render_template, request
 from markupsafe import escape
-import json
-import pandas as pd
+
 from convert import data
 
 app = Flask(__name__)
