@@ -1,6 +1,9 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, request, jsonify
 from markupsafe import escape
+import pandas as pd
 import utils
+import json
+from convert import data
 
 app = Flask(__name__)
 
@@ -8,13 +11,14 @@ app = Flask(__name__)
 def hello():
     return render_template("index.html")
 
-@app.route('/about/')
+@app.route('/about')
 def about():
     return render_template("about.html")
 
-@app.route('/user/<path:username>')
-def greeting(username):
-    return " Hello, {}".format(escape(username))
+@app.route('/all')
+def alllist():
+    return data
+
 
 @app.route('/search/')
 def search():
@@ -23,7 +27,7 @@ def search():
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return "not found", 404
+    return render_template("error.html"), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
