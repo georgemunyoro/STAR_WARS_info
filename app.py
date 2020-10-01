@@ -18,7 +18,7 @@ def greeting(username):
 
 @app.route('/search/')
 def search():
-    entity_type = request.args.get('type') if request.args.get('type') is not None else ''
+    entity_type = request.args.get('type') if request.args.get('type') is not None else 'any'
     return jsonify(utils.search(entity_type, **dict(request.args)))
 
 @app.errorhandler(404)
