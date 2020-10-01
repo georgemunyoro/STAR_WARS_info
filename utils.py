@@ -21,14 +21,10 @@ def search_csv_file(files_to_search: List[str], **kwargs) -> List[Dict[str, str]
     return matching_rows
 
 
-def search(entity_type, **kwargs) -> List[Dict[str, str]]:
+def search(entity_type: str = 'any', **kwargs) -> List[Dict[str, str]]:
+    entity_types = ['vehicles', 'species', 'starships', 'planets', 'characters']
+    if entity_type == 'any':
+        return search_csv_file([f'./data/{t}.csv' for t in entity_types], **kwargs)
     return search_csv_file(
-        [f'./data/{t}.csv' for t in [
-            'vehicles',
-            'species',
-            'starships',
-            'planets',
-            'characters',
-        ] if entity_type == t] if entity_type != 'all' else [],
-        **kwargs
+        [f'./data/{t}.csv' for t in entity_types if entity_type == t] if entity_type != 'all' else [], **kwargs
     )
