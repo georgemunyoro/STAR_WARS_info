@@ -1,7 +1,9 @@
 import json
 
 import pandas as pd
-from flask import Flask, render_template, request
+from flask import Flask
+from flask import render_template
+from flask import request
 from markupsafe import escape
 
 from convert import data
