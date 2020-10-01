@@ -1,8 +1,8 @@
 import csv
-from typing import List
+from typing import List, Dict
 
 
-def search_csv_file(files_to_search: List[str], **kwargs) -> str:
+def search_csv_file(files_to_search: List[str], **kwargs) -> List[Dict[str, str]]:
     """
     Returns a list of rows that match the given parameters
     """
@@ -15,40 +15,20 @@ def search_csv_file(files_to_search: List[str], **kwargs) -> str:
                     if type(value) == int:
                         value = str(value)
 
-                    if key in row.keys() and row[key] == value:
+                    if key in row.keys() and value.lower() in row[key].lower():
                         matching_rows.append(row)
 
     return matching_rows
 
 
-def search_characters(**kwargs) -> str:
-    return search_csv_file(["./data/characters.csv"], **kwargs)
-
-
-def search_planets(**kwargs) -> str:
-    return search_csv_file(["./data/planets.csv"], **kwargs)
-
-
-def search_starships(**kwargs) -> str:
-    return search_csv_file(["./data/starships.csv"], **kwargs)
-
-
-def search_species(**kwargs) -> str:
-    return search_csv_file(["./data/species.csv"], **kwargs)
-
-
-def search_vehicles(**kwargs) -> str:
-    return search_csv_file(["./data/vehicles.csv"], **kwargs)
-
-
-def search_all(**kwargs) -> str:
+def search(entity_type, **kwargs) -> List[Dict[str, str]]:
     return search_csv_file(
-        [
-            "./data/vehicles.csv",
-            "./data/species.csv",
-            "./data/starships.csv",
-            "./data/planets.csv",
-            "./data/characters.csv",
-        ],
+        [f'./data/{t}.csv' for t in [
+            'vehicles',
+            'species',
+            'starships',
+            'planets',
+            'characters',
+        ] if entity_type == t] if entity_type != 'all' else [],
         **kwargs
     )
