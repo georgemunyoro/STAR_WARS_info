@@ -18,19 +18,8 @@ def greeting(username):
 
 @app.route('/search/')
 def search():
-    print(dict(request.args))
-    if request.args.get('type') == 'characters':
-        return {'items': utils.search_characters(**dict(request.args))}
-    elif request.args.get('type') == 'vehicle':
-        return {'items': utils.search_vehicles(**dict(request.args))}
-    elif request.args.get('type') == 'species':
-        return {'items': utils.search_species(**dict(request.args))}
-    elif request.args.get('type') == 'starships':
-        return {'items': utils.search_starships(**dict(request.args))}
-    elif request.args.get('type') == 'planets':
-        return {'items': utils.search_planets(**dict(request.args))}
-    else:
-        return {'items': utils.search_all(**dict(request.args))}
+    entity_type = request.args.get('type') if request.args.get('type') is not None else ''
+    return jsonify(utils.search(entity_type, **dict(request.args)))
 
 @app.errorhandler(404)
 def page_not_found(error):
